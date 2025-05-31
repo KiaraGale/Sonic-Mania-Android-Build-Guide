@@ -14,7 +14,7 @@ This is a guide to building your own Sonic Mania APK for Android. This guide is 
 
 5. Right click `ManiaAndroidBuildHelper_2.0.bat` and click "Run As Administrator". This is very important. ***If you do not select Run As Administrator, the script will fail to create the required symlinks, and it will not compile correctly!!***
 
-6. Follow the directions in the command line window. You should want to choose `y` for Touch Controls and Ultra Widescreen, but neither are technically _required_.
+6. Follow the directions in the command line window. You should want to choose `y` for Touch Controls and Ultra Widescreen, but neither are technically _required_. Compilation for Sonic Mania Addendum is also supported.
 
 7. Once the script says `SETUP COMPLETE`, open Android Studio. Click `File` in the navigation bar at the top, click `Open`, navigate to `C:\Users\username\Sonic-Mania-Android-Sheeple\Sonic-Mania-Decompilation\dependencies\RSDKv5\android` (replacing 'username' with whatever your Users folder is called) and click `OK`. Android Studio will then run some automatic actions in the background to import the project.
 
