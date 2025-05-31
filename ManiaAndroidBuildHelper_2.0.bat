@@ -15,7 +15,7 @@ goto isitstillthere
 echo Checking for existing folder... 
 echo.
 if exist "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\ (
-  echo Existing Folder being deleted, this should take about 10 seconds...
+  echo Existing folder being deleted, this should take about 10 seconds...
   rmdir /s /q "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\
   c:\WINDOWS\System32\timeout.exe /t 10 /nobreak > NUL
   echo.
@@ -29,13 +29,16 @@ goto preferences
 :preferences
 set touch=y
 set ultrawide=y
+set addendum=n
 set /p touch=Build with Touch Control support? (y/n; default is y) 
 set /p ultrawide=Build with Ultra-Widescreen support? (y/n; default is y) 
+set /p addendum=Build with Sonic Mania Addendum support? (y/n; default is n) 
 cls
 goto clone
 
 :clone
 git clone https://github.com/RSDKModding/Sonic-Mania-Decompilation.git "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\Sonic-Mania-Decompilation
+git clone https://github.com/KiaraGale/Sonic-Mania-Addendum.git "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\Sonic-Mania-Addendum
 git clone https://github.com/RSDKModding/RSDKv5-Example-Mods.git "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\RSDKv5-Example-Mods
 git clone https://github.com/RSDKModding/RSDKv5-GameAPI.git "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\GameAPI
 git clone https://github.com/RSDKModding/RSDKv5-Decompilation.git "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\Sonic-Mania-Decompilation\dependencies\RSDKv5 --recursive
@@ -95,15 +98,18 @@ mklink /D "Game" "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\Sonic-Mania-Decompi
 mklink /D "GameAPI" "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\GameAPI
 if /I %touch%==y mklink /D "MTouchCtrl" "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\RSDKv5-Example-Mods\ManiaTouchControls
 if /I %ultrawide%==y mklink /D "UWMania" "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\RSDKv5-Example-Mods\UltrawideMania
+if /I %addendum%==y mklink /D "Addendum" "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\Sonic-Mania-Addendum
+if /I %addendum%==y del "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\Sonic-Mania-Addendum\CMakeLists.txt
+if /I %addendum%==y ren "%USERPROFILE%"\Sonic-Mania-Android-Sheeple\Sonic-Mania-Addendum\CMakeListsA.txt CMakeLists.txt
 echo Symlink setup done.
 goto finish
 
 :finish
 cls
 color AF
-echo -------------------------------------------------------------------------------------------------------------------
-echo SETUP COMPLETE. Please continue with the guide at https://github.com/Kiaru-the-Fox/Sonic-Mania-Android-Build-Guide/
-echo -------------------------------------------------------------------------------------------------------------------
+echo ------------------------------------------------------------------------------------------------------------------
+echo SETUP COMPLETE. Please continue with the guide at https://github.com/Kiaru-the-Fox/Sonic-Mania-Android-Build-Guide
+echo ------------------------------------------------------------------------------------------------------------------
 echo.
 pause
 exit
